@@ -1,0 +1,19 @@
+version: "3.0"
+services:
+  postgres:
+    image: postgres:17
+    container_name: pr_postgres
+    networks:
+      - pr_network
+    environment:
+      POSTGRES_USER: apppr
+      POSTGRES_PASSWORD: pswpr
+      POSTGRES_DB: people-registration
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres/data:/var/lib/postgresql/data
+      - ./postgres/scripts:/docker-entrypoint-initdb.d
+networks:
+  pr_network:
+    driver: bridge

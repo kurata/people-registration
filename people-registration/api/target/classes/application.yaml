@@ -1,0 +1,50 @@
+# INFO ENDPOINT CONFIGURATION
+info.app:
+  name: 'people-registration-api'
+  description: '@project.description@'
+  version: '1.0-SNAPSHOT'
+  encoding: 'UTF-8'
+  java.version: '17.0.1'
+
+openapi:
+  pessoas:
+    base-path:
+
+server:
+  port: 8443
+  servlet:
+    context-path: /pessoas/api
+#  ssl:
+#    certificate: "classpath:at_hand.crt"
+#    certificate-private-key: "classpath:at_hand.key"
+
+spring:
+  flyway:
+    schemas: people-registration
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        default_schema: people-registration
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: false
+        temp.use_jdbc_metadata_defaults: false
+        jdbc.time_zone: UTC
+    show-sql: false
+  messages:
+    basename: messages/messages
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
+  profiles:
+    active: ${profiles_active:local}
+  output:
+    ansi:
+      enabled: always
+
+springdoc:
+  swagger-ui:
+    syntaxHighlight:
+      theme: tomorrow-night

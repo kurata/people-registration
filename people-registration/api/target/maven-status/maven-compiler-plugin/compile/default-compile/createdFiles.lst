@@ -1,0 +1,13 @@
+br\com\aqueteron\people\registration\api\PeopleApi.class
+br\com\aqueteron\people\registration\api\people\PeopleRepository.class
+br\com\aqueteron\people\registration\api\Application.class
+br\com\aqueteron\people\registration\api\people\PeopleController.class
+br\com\aqueteron\people\registration\api\model\PeopleApiSchema.class
+br\com\aqueteron\people\registration\api\ApiUtil.class
+br\com\aqueteron\people\registration\api\people\People.class
+br\com\aqueteron\people\registration\api\people\PeopleService.class
+br\com\aqueteron\people\registration\api\model\ErrorResponseApiSchema.class
+br\com\aqueteron\people\registration\api\people\PeopleMapperImpl.class
+br\com\aqueteron\people\registration\api\people\PeopleMapper.class
+br\com\aqueteron\people\registration\api\configuration\GlobalExceptionHandler.class
+br\com\aqueteron\people\registration\api\configuration\PessoasApiMVCConfiguration.class

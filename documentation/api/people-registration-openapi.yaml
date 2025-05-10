@@ -1,0 +1,196 @@
+openapi: 3.0.3
+info:
+  title: People Registration API
+  description: |- 
+    API para registro de dados pessoais.
+  version: 1.0.0
+servers:
+  - url: 'https://localhost:8443/people-registration/api'
+tags:
+  - name: People
+    description: People registration
+paths:
+  /v1/people:
+    get:
+      tags:
+        - People
+      summary: Listar cadatros
+      description: Lista todos os cadastros
+      operationId: searchPeople
+      responses:
+        '200':
+          description: Sucesso em recuperar registros
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/People'
+        '400':
+          description: Erro em recuperar registros
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      tags:
+        - People
+      summary: Criar cadastro
+      description: Cria um cadastro
+      operationId: createPeople
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/People'
+      responses:
+        '201':
+          description: Sucesso em criar cadastro
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/People'
+        '400':
+          description: Entrada inválida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /v1/people/{peopleId}:
+    parameters:
+      - name: peopleId
+        in: path
+        description: Identificador do registro
+        required: true
+        schema:
+          type: string
+          format: uuid
+          example: 18aad3c4-b9e8-4884-bf74-e049ce0fbc79
+    get:
+      tags:
+        - People
+      summary: Recuperar registro
+      description: Recupera um registro
+      operationId: retrievePeople
+      responses:
+        '200':
+          description: Sucesso ao recuperar registro
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/People'
+        '404':
+          description: Registro não encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      tags:
+        - People
+      summary: Editar registro
+      description: Edita um registro
+      operationId: fullUpdatePeople
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/People'
+      responses:
+        '200':
+          description: Sucesso ao atualizar o registro
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/People'
+        '400':
+          description: Erro ao editar registro
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Registro para editar não encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      tags:
+        - People
+      summary: Editar registro
+      description: Edita o registro
+      operationId: updatePeople
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/People'
+      responses:
+        '200':
+          description: Sucesso ao editar o registro
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/People'
+        '400':
+          description: Erro ao atualizar registro
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Registro não encontrado para editar
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - at_hand_auth:
+            - profile
+components:
+  schemas:
+    People:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uudi
+          readOnly: true
+          example: 84736dce-3bbb-4689-83aa-575271600047
+        nome:
+          type: string
+          example: Maria
+        sobrenome:
+          type: string
+          example: Aparecida dos Santos
+        idade:
+          type: integer
+          example: 37
+        pais:
+          type: string
+          example: Brasil
+    ErrorResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          format: uri
+          example: about:blank
+        title:
+          type: string
+          example: Internal server error
+        status:
+          type: integer
+          format: int32
+          example: 500
+        detail:
+          type: string
+          example: Error to retrieve user
+        instance:
+          type: string
+          format: uri
+        properties:
+          type: object
+          additionalProperties:
+            type: string

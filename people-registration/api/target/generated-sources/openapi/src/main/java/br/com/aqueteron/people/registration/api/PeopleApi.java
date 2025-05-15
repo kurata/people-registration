@@ -76,46 +76,6 @@ public interface PeopleApi {
 
 
     /**
-     * PUT /v1/people/{peopleId} : Editar registro
-     * Edita um registro
-     *
-     * @param peopleId Identificador do registro (required)
-     * @param peopleApiSchema  (optional)
-     * @return Sucesso ao atualizar o registro (status code 200)
-     *         or Erro ao editar registro (status code 400)
-     *         or Registro para editar não encontrado (status code 404)
-     */
-    @Operation(
-        operationId = "fullUpdatePeople",
-        summary = "Editar registro",
-        description = "Edita um registro",
-        tags = { "People" },
-        responses = {
-            @ApiResponse(responseCode = "200", description = "Sucesso ao atualizar o registro", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = PeopleApiSchema.class))
-            }),
-            @ApiResponse(responseCode = "400", description = "Erro ao editar registro", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponseApiSchema.class))
-            }),
-            @ApiResponse(responseCode = "404", description = "Registro para editar não encontrado", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponseApiSchema.class))
-            })
-        }
-    )
-    @RequestMapping(
-        method = RequestMethod.PUT,
-        value = "/v1/people/{peopleId}",
-        produces = { "application/json" },
-        consumes = { "application/json" }
-    )
-    
-    ResponseEntity<PeopleApiSchema> fullUpdatePeople(
-        @Parameter(name = "peopleId", description = "Identificador do registro", required = true, in = ParameterIn.PATH) @PathVariable("peopleId") UUID peopleId,
-        @Parameter(name = "PeopleApiSchema", description = "") @Valid @RequestBody(required = false) PeopleApiSchema peopleApiSchema
-    );
-
-
-    /**
      * GET /v1/people/{peopleId} : Recuperar registro
      * Recupera um registro
      *

@@ -27,7 +27,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/People'
         '400':
-          description: Erro em recuperar registros
+          description: Erro ao recuperar registros
           content:
             application/json:
               schema:
@@ -45,7 +45,7 @@ paths:
               $ref: '#/components/schemas/People'
       responses:
         '201':
-          description: Sucesso em criar cadastro
+          description: Sucesso ao criar cadastro
           content:
             application/json:
               schema:
@@ -81,36 +81,6 @@ paths:
                 $ref: '#/components/schemas/People'
         '404':
           description: Registro não encontrado
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-    put:
-      tags:
-        - People
-      summary: Editar registro
-      description: Edita um registro
-      operationId: fullUpdatePeople
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/People'
-      responses:
-        '200':
-          description: Sucesso ao atualizar o registro
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/People'
-        '400':
-          description: Erro ao editar registro
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '404':
-          description: Registro para editar não encontrado
           content:
             application/json:
               schema:
@@ -186,7 +156,7 @@ components:
           example: 500
         detail:
           type: string
-          example: Error to retrieve user
+          example: Erro ao recuperar registro
         instance:
           type: string
           format: uri

@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: br.com.aqueteron.people.registration.api.people.PeopleMapperImplTest
+-------------------------------------------------------------------------------
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.016 s -- in br.com.aqueteron.people.registration.api.people.PeopleMapperImplTest

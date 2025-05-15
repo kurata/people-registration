@@ -21,19 +21,14 @@ public class PeopleController implements PeopleApi {
     private final PeopleService peopleService;
 
     @Override
-    public ResponseEntity<PeopleApiSchema> createPeople(PeopleApiSchema peopleApiSchema) {
+    public ResponseEntity<PeopleApiSchema> createPeople(final PeopleApiSchema peopleApiSchema) {
         People people = this.peopleMapper.toPeople(UUID.randomUUID(), peopleApiSchema);
         people = this.peopleService.createPeople(people);
         return ResponseEntity.status(HttpStatus.CREATED).body(this.peopleMapper.toPeopleApiSchema(people));
     }
 
     @Override
-    public ResponseEntity<PeopleApiSchema> fullUpdatePeople(UUID peopleId, PeopleApiSchema peopleApiSchema) {
-        return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).build();
-    }
-
-    @Override
-    public ResponseEntity<PeopleApiSchema> retrievePeople(UUID peopleId) {
+    public ResponseEntity<PeopleApiSchema> retrievePeople(final UUID peopleId) {
         People people = this.peopleService.retrievePeople(peopleId);
         return ResponseEntity.ok(this.peopleMapper.toPeopleApiSchema(people));
     }
@@ -45,7 +40,7 @@ public class PeopleController implements PeopleApi {
     }
 
     @Override
-    public ResponseEntity<PeopleApiSchema> updatePeople(UUID peopleId, PeopleApiSchema peopleApiSchema) {
+    public ResponseEntity<PeopleApiSchema> updatePeople(final UUID peopleId, final PeopleApiSchema peopleApiSchema) {
         People people = this.peopleMapper.toPeople(peopleId, peopleApiSchema);
         people = this.peopleService.editPeople(people);
         return ResponseEntity.ok(this.peopleMapper.toPeopleApiSchema(people));

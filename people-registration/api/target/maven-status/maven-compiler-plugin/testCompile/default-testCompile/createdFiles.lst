@@ -1,0 +1,12 @@
+br\com\aqueteron\people\registration\api\configuration\BusinessExceptionStub.class
+br\com\aqueteron\people\registration\api\operation\OperationWebFilterTest.class
+br\com\aqueteron\people\registration\api\operation\OperationStubs.class
+br\com\aqueteron\people\registration\api\people\PeopleTest.class
+br\com\aqueteron\people\registration\api\people\PeopleMapperImplTest.class
+br\com\aqueteron\people\registration\api\people\PeopleControllerTest.class
+br\com\aqueteron\people\registration\api\operation\OperationPersistenceReceiverTest.class
+br\com\aqueteron\people\registration\api\people\PeopleApiSchemaStub.class
+br\com\aqueteron\people\registration\api\operation\OperationServiceTest.class
+br\com\aqueteron\people\registration\api\people\PeopleStubs.class
+br\com\aqueteron\people\registration\api\configuration\GlobalExceptionHandlerTest.class
+br\com\aqueteron\people\registration\api\people\PeopleServiceTest.class

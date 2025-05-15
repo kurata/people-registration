@@ -1,10 +1,12 @@
 # INFO ENDPOINT CONFIGURATION
-info.app:
-  name: 'people-registration-api'
-  description: '@project.description@'
-  version: '1.0-SNAPSHOT'
-  encoding: 'UTF-8'
-  java.version: '17.0.1'
+info:
+  app:
+    name: "@project.name@"
+    description: "@project.description@"
+    version: "1.0-SNAPSHOT"
+    encoding: "UTF-8"
+    java.vendor: "Oracle Corporation"
+    java.version: "23.0.2"
 
 openapi:
   pessoas:
@@ -48,3 +50,24 @@ springdoc:
   swagger-ui:
     syntaxHighlight:
       theme: tomorrow-night
+
+management:
+  endpoint:
+    health:
+      show-components: always
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "health,info,loggers,metrics,startup,prometheus"
+  health:
+    diskspace:
+      enabled: false
+    ssl:
+      enabled: false
+  info:
+    git:
+      mode: full
+otel:
+  service:
+    name: test

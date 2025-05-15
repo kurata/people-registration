@@ -24,7 +24,8 @@ public class People implements Serializable {
 
     private String pais;
 
-    public People() {
+    protected People() {
         this(null);
     }
+
 }

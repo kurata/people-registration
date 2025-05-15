@@ -1,4 +1,7 @@
 spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/people-registration
   datasource:
     url: jdbc:postgresql://localhost:5432/people-registration
     username: apppr

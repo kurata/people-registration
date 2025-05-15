@@ -27,4 +27,4 @@ replay_pid*
 .idea
 
 # Docker data local
-docker/postgres/data
+docker/*/data

@@ -1,26 +1,25 @@
 # INFO ENDPOINT CONFIGURATION
 info:
   app:
-    name: "@project.name@"
+    name: "people-registration-api"
     description: "@project.description@"
     version: "1.0-SNAPSHOT"
     encoding: "UTF-8"
     java.vendor: "Oracle Corporation"
-    java.version: "23.0.2"
-
-openapi:
-  pessoas:
-    base-path:
+    java.version: "17.0.1"
 
 server:
-  port: 8443
   servlet:
     context-path: /pessoas/api
-#  ssl:
-#    certificate: "classpath:at_hand.crt"
-#    certificate-private-key: "classpath:at_hand.key"
 
 spring:
+  data:
+    mongodb:
+      uri: ${MONGO_URL}
+  datasource:
+    url: ${POSTGRESQL_URL}
+    username: ${POSTGRESQL_USER}
+    password: ${POSTGRESQL_PASSWORD}
   flyway:
     schemas: people-registration
   jpa:
@@ -41,10 +40,15 @@ spring:
     pathmatch:
       matching-strategy: ant-path-matcher
   profiles:
-    active: ${profiles_active:local}
+    active: ${PROFILES}
   output:
     ansi:
       enabled: always
+  rabbitmq:
+    host: ${RABBIT_HOST}
+    port: ${RABBIT_PORT}
+    username: ${RABBIT_USER}
+    password: ${RABBIT_PASSWORD}
 
 springdoc:
   swagger-ui:
@@ -68,6 +72,4 @@ management:
   info:
     git:
       mode: full
-otel:
-  service:
-    name: test
+

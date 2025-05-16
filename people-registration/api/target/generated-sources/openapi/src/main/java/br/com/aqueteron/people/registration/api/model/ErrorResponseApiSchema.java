@@ -113,7 +113,7 @@ public class ErrorResponseApiSchema implements Serializable {
    * @return detail
    */
   
-  @Schema(name = "detail", example = "Error to retrieve user", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "detail", example = "Erro ao recuperar registro", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("detail")
   public String getDetail() {
     return detail;

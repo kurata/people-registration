@@ -33,6 +33,22 @@ services:
       - "27017:27017"
     volumes:
       - ./mongodb/data:/data/db
+  people-registration:
+    image: people-registration-api:1.0-SNAPSHOT
+    container_name: people-registration-id
+    networks:
+      - pr_network
+    environment:
+      MONGO_URL: mongodb://pr_mongodb:27017/people-registration
+      POSTGRESQL_URL: jdbc:postgresql://pr_postgres:5432/people-registration
+      POSTGRESQL_USER: apppr
+      POSTGRESQL_PASSWORD: pswpr
+      RABBIT_HOST: pr_rabbitmq
+      RABBIT_PORT: 5672
+      RABBIT_USER: guest
+      RABBIT_PASSWORD: guest
+    ports:
+      - "8080:8080"
 networks:
   pr_network:
     driver: bridge

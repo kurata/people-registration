@@ -92,9 +92,7 @@ class PeopleMapperImplTest {
 
     @Test
     void shouldToPeopleApiSchemaWithPeopleNull() {
-        People people = null;
-
-        PeopleApiSchema peopleApiSchemaResult = this.peopleMapper.toPeopleApiSchema(people);
+        PeopleApiSchema peopleApiSchemaResult = this.peopleMapper.toPeopleApiSchema(null);
 
         assertNull(peopleApiSchemaResult);
     }
@@ -111,9 +109,7 @@ class PeopleMapperImplTest {
 
     @Test
     void shouldToPeopleApiSchemaListWithPeopleListNull() {
-        List<People> peopleList = null;
-
-        List<PeopleApiSchema> apiSchemaList = this.peopleMapper.toPeopleApiSchemaList(peopleList);
+        List<PeopleApiSchema> apiSchemaList = this.peopleMapper.toPeopleApiSchemaList(null);
 
         assertNull(apiSchemaList);
     }

@@ -1,11 +1,9 @@
 package br.com.aqueteron.people.registration.api.people;
 
 import br.com.aqueteron.people.registration.api.exception.BusinessException;
-import br.com.aqueteron.people.registration.api.model.PeopleApiSchema;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

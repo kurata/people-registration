@@ -46,7 +46,7 @@ public interface PeopleApi {
      * Cria um cadastro
      *
      * @param peopleApiSchema  (optional)
-     * @return Sucesso em criar cadastro (status code 201)
+     * @return Sucesso ao criar cadastro (status code 201)
      *         or Entrada inválida (status code 400)
      */
     @Operation(
@@ -55,7 +55,7 @@ public interface PeopleApi {
         description = "Cria um cadastro",
         tags = { "People" },
         responses = {
-            @ApiResponse(responseCode = "201", description = "Sucesso em criar cadastro", content = {
+            @ApiResponse(responseCode = "201", description = "Sucesso ao criar cadastro", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = PeopleApiSchema.class))
             }),
             @ApiResponse(responseCode = "400", description = "Entrada inválida", content = {
@@ -113,7 +113,7 @@ public interface PeopleApi {
      * Lista todos os cadastros
      *
      * @return Sucesso em recuperar registros (status code 200)
-     *         or Erro em recuperar registros (status code 400)
+     *         or Erro ao recuperar registros (status code 400)
      */
     @Operation(
         operationId = "searchPeople",
@@ -124,7 +124,7 @@ public interface PeopleApi {
             @ApiResponse(responseCode = "200", description = "Sucesso em recuperar registros", content = {
                 @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = PeopleApiSchema.class)))
             }),
-            @ApiResponse(responseCode = "400", description = "Erro em recuperar registros", content = {
+            @ApiResponse(responseCode = "400", description = "Erro ao recuperar registros", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponseApiSchema.class))
             })
         }

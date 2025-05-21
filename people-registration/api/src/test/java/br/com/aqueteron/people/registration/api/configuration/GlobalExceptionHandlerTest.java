@@ -19,7 +19,7 @@ class GlobalExceptionHandlerTest {
 
     @Test
     void shouldHandleBusinessException() {
-        BusinessException businessException = BusinessExceptionStub.createBusinessException();
+        BusinessException businessException = ExceptionStub.createBusinessException();
 
         ResponseEntity<ProblemDetail> responseEntity = this.globalExceptionHandler.handleException(businessException);
 
@@ -33,15 +33,29 @@ class GlobalExceptionHandlerTest {
 
     @Test
     void shouldHandleException() {
-        Exception businessException = BusinessExceptionStub.createException();
+        Exception exception = ExceptionStub.createException();
 
-        ResponseEntity<ProblemDetail> responseEntity = this.globalExceptionHandler.handleException(businessException);
+        ResponseEntity<ProblemDetail> responseEntity = this.globalExceptionHandler.handleException(exception);
 
         assertNotNull(responseEntity);
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, responseEntity.getStatusCode());
         ProblemDetail problemDetail = responseEntity.getBody();
         assertNotNull(problemDetail);
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR.value(), problemDetail.getStatus());
-        assertEquals(businessException.getMessage(), problemDetail.getDetail());
+        assertEquals(exception.getMessage(), problemDetail.getDetail());
+    }
+
+    @Test
+    void shouldHandleIllegalArgumentException() {
+        IllegalArgumentException illegalArgumentException = ExceptionStub.createIllegalArgumentException();
+
+        ResponseEntity<ProblemDetail> responseEntity = this.globalExceptionHandler.handleException(illegalArgumentException);
+
+        assertNotNull(responseEntity);
+        assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
+        ProblemDetail problemDetail = responseEntity.getBody();
+        assertNotNull(problemDetail);
+        assertEquals(HttpStatus.BAD_REQUEST.value(), problemDetail.getStatus());
+        assertEquals(illegalArgumentException.getMessage(), problemDetail.getDetail());
     }
 }

@@ -29,7 +29,7 @@ public class Age implements Serializable {
             return;
         }
         if (age < 1 || age > 100) {
-            throw new IllegalArgumentException(String.format("Invalid Age: %d .Age must be between 1 and 100", age));
+            throw new IllegalArgumentException(String.format("Invalid Age: %d.Age must be between 1 and 100", age));
         }
     }
 

@@ -16,16 +16,24 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(BusinessException.class)
     public ResponseEntity<ProblemDetail> handleException(final BusinessException businessException) {
         log.warn(businessException.getMessage(), businessException);
-        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(businessException.getHttpStatus(), businessException.getMessage());
-        problemDetail.setProperty("trace", ExceptionUtils.getStackTrace(businessException));
-        return ResponseEntity.of(problemDetail).build();
+        return ResponseEntity.of(buildProblemDetail(businessException.getHttpStatus(), businessException)).build();
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<ProblemDetail> handleException(final IllegalArgumentException illegalArgumentException) {
+        log.warn(illegalArgumentException.getMessage());
+        return ResponseEntity.of(buildProblemDetail(HttpStatus.BAD_REQUEST, illegalArgumentException)).build();
     }
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ProblemDetail> handleException(final Exception exception) {
         log.warn(exception.getMessage(), exception);
-        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.INTERNAL_SERVER_ERROR, exception.getMessage());
+        return ResponseEntity.of(buildProblemDetail(HttpStatus.INTERNAL_SERVER_ERROR, exception)).build();
+    }
+
+    private ProblemDetail buildProblemDetail(final HttpStatus httpStatus, final Exception exception) {
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(httpStatus, exception.getMessage());
         problemDetail.setProperty("trace", ExceptionUtils.getStackTrace(exception));
-        return ResponseEntity.of(problemDetail).build();
+        return problemDetail;
     }
 }

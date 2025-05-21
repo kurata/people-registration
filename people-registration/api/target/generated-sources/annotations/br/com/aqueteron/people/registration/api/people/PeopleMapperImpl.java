@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-05-15T23:25:08-0300",
-    comments = "version: 1.6.3, compiler: javac, environment: Java 17.0.1 (Oracle Corporation)"
+    date = "2025-05-20T22:34:26-0300",
+    comments = "version: 1.6.3, compiler: javac, environment: Java 21.0.7 (Amazon.com Inc.)"
 )
 @Component
 public class PeopleMapperImpl implements PeopleMapper {
@@ -27,10 +27,10 @@ public class PeopleMapperImpl implements PeopleMapper {
         People people = new People( id );
 
         if ( peopleApiSchema != null ) {
-            people.setNome( peopleApiSchema.getNome() );
-            people.setSobrenome( peopleApiSchema.getSobrenome() );
-            people.setIdade( peopleApiSchema.getIdade() );
-            people.setPais( peopleApiSchema.getPais() );
+            people.setName( peopleApiSchema.getNome() );
+            people.setSurname( peopleApiSchema.getSobrenome() );
+            people.setAge( peopleApiSchema.getIdade() );
+            people.setCountry( peopleApiSchema.getPais() );
         }
 
         return people;
@@ -44,13 +44,13 @@ public class PeopleMapperImpl implements PeopleMapper {
 
         PeopleApiSchema peopleApiSchema = new PeopleApiSchema();
 
+        peopleApiSchema.setNome( people.getName() );
+        peopleApiSchema.setSobrenome( people.getSurname() );
+        peopleApiSchema.setIdade( people.getAge() );
+        peopleApiSchema.setPais( people.getCountry() );
         if ( people.getId() != null ) {
             peopleApiSchema.setId( people.getId().toString() );
         }
-        peopleApiSchema.setNome( people.getNome() );
-        peopleApiSchema.setSobrenome( people.getSobrenome() );
-        peopleApiSchema.setIdade( people.getIdade() );
-        peopleApiSchema.setPais( people.getPais() );
 
         return peopleApiSchema;
     }

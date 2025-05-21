@@ -34,17 +34,17 @@ public class PeopleService {
         People persistedPeople = this.peopleRepository
                 .findById(people.getId())
                 .orElseThrow(() -> new BusinessException(HttpStatus.NOT_FOUND, "Registro não encontrado"));
-        if (people.getNome() != null) {
-            persistedPeople.setNome(people.getNome());
+        if (people.getName() != null) {
+            persistedPeople.setName(people.getName());
         }
-        if (people.getSobrenome() != null) {
-            persistedPeople.setSobrenome(people.getSobrenome());
+        if (people.getSurname() != null) {
+            persistedPeople.setSurname(people.getSurname());
         }
-        if (people.getIdade() != null) {
-            persistedPeople.setIdade(people.getIdade());
+        if (people.getAge() != null) {
+            persistedPeople.setAge(people.getAge());
         }
-        if (people.getPais() != null) {
-            persistedPeople.setPais(people.getPais());
+        if (people.getCountry() != null) {
+            persistedPeople.setCountry(people.getCountry());
         }
         return persistedPeople;
     }

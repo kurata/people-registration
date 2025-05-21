@@ -88,10 +88,10 @@ class PeopleServiceTest {
     @Test
     void shouldEditPeopleWithEmptyEdit() {
         People people = PeopleStubs.createNewPeople();
-        people.setNome(null);
-        people.setSobrenome(null);
-        people.setIdade(null);
-        people.setPais(null);
+        people.setName(null);
+        people.setSurname(null);
+        people.setAge(null);
+        people.setCountry(null);
         People originalPeople = PeopleStubs.createNewPeople(people.getId());
 
         when(this.repository.findById(people.getId())).thenReturn(Optional.of(originalPeople));

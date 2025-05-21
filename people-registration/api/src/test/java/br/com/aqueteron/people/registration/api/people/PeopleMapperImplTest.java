@@ -21,10 +21,10 @@ class PeopleMapperImplTest {
 
         assertNotNull(peopleResult);
         assertEquals(peopleId, peopleResult.getId());
-        assertEquals(peopleApiSchema.getNome(), peopleResult.getNome());
-        assertEquals(peopleApiSchema.getSobrenome(), peopleResult.getSobrenome());
-        assertEquals(peopleApiSchema.getIdade(), peopleResult.getIdade());
-        assertEquals(peopleApiSchema.getPais(), peopleResult.getPais());
+        assertEquals(peopleApiSchema.getNome(), peopleResult.getName());
+        assertEquals(peopleApiSchema.getSobrenome(), peopleResult.getSurname());
+        assertEquals(peopleApiSchema.getIdade(), peopleResult.getAge());
+        assertEquals(peopleApiSchema.getPais(), peopleResult.getCountry());
     }
 
     @Test
@@ -42,10 +42,10 @@ class PeopleMapperImplTest {
 
         assertNotNull(peopleResult);
         assertNull(peopleResult.getId());
-        assertEquals(peopleApiSchema.getNome(), peopleResult.getNome());
-        assertEquals(peopleApiSchema.getSobrenome(), peopleResult.getSobrenome());
-        assertEquals(peopleApiSchema.getIdade(), peopleResult.getIdade());
-        assertEquals(peopleApiSchema.getPais(), peopleResult.getPais());
+        assertEquals(peopleApiSchema.getNome(), peopleResult.getName());
+        assertEquals(peopleApiSchema.getSobrenome(), peopleResult.getSurname());
+        assertEquals(peopleApiSchema.getIdade(), peopleResult.getAge());
+        assertEquals(peopleApiSchema.getPais(), peopleResult.getCountry());
     }
 
     @Test
@@ -56,10 +56,10 @@ class PeopleMapperImplTest {
 
         assertNotNull(peopleResult);
         assertEquals(peopleId, peopleResult.getId());
-        assertNull(peopleResult.getNome());
-        assertNull(peopleResult.getSobrenome());
-        assertNull(peopleResult.getIdade());
-        assertNull(peopleResult.getPais());
+        assertNull(peopleResult.getName());
+        assertNull(peopleResult.getSurname());
+        assertNull(peopleResult.getAge());
+        assertNull(peopleResult.getCountry());
     }
 
     @Test
@@ -70,10 +70,10 @@ class PeopleMapperImplTest {
 
         assertNotNull(peopleApiSchemaResult);
         assertEquals(people.getId().toString(), peopleApiSchemaResult.getId());
-        assertEquals(people.getNome(), peopleApiSchemaResult.getNome());
-        assertEquals(people.getSobrenome(), peopleApiSchemaResult.getSobrenome());
-        assertEquals(people.getIdade(), peopleApiSchemaResult.getIdade());
-        assertEquals(people.getPais(), peopleApiSchemaResult.getPais());
+        assertEquals(people.getName(), peopleApiSchemaResult.getNome());
+        assertEquals(people.getSurname(), peopleApiSchemaResult.getSobrenome());
+        assertEquals(people.getAge(), peopleApiSchemaResult.getIdade());
+        assertEquals(people.getCountry(), peopleApiSchemaResult.getPais());
     }
 
     @Test
@@ -84,10 +84,10 @@ class PeopleMapperImplTest {
 
         assertNotNull(peopleApiSchemaResult);
         assertNull(peopleApiSchemaResult.getId());
-        assertEquals(people.getNome(), peopleApiSchemaResult.getNome());
-        assertEquals(people.getSobrenome(), peopleApiSchemaResult.getSobrenome());
-        assertEquals(people.getIdade(), peopleApiSchemaResult.getIdade());
-        assertEquals(people.getPais(), peopleApiSchemaResult.getPais());
+        assertEquals(people.getName(), peopleApiSchemaResult.getNome());
+        assertEquals(people.getSurname(), peopleApiSchemaResult.getSobrenome());
+        assertEquals(people.getAge(), peopleApiSchemaResult.getIdade());
+        assertEquals(people.getCountry(), peopleApiSchemaResult.getPais());
     }
 
     @Test

@@ -1,6 +1,7 @@
 package br.com.aqueteron.people.registration.api.people;
 
 import br.com.aqueteron.people.registration.api.exception.BusinessException;
+import io.micrometer.observation.annotation.Observed;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,11 @@ public class PeopleService {
                 .orElseThrow(() -> new BusinessException(HttpStatus.NOT_FOUND, "Registro não encontrado"));
     }
 
+    @Observed(
+            name = "people.search",
+            contextualName = "searching-people",
+            lowCardinalityKeyValues = {"peopleType", "peopleSearch"}
+    )
     public List<People> searchPeople() {
         return this.peopleRepository.findAll();
     }

@@ -35,7 +35,7 @@ services:
       - ./mongodb/data:/data/db
   people-registration:
     image: people-registration-api:1.0-SNAPSHOT
-    container_name: people-registration-id
+    container_name: people-registration-api
     networks:
       - pr_network
     environment:
@@ -49,6 +49,23 @@ services:
       RABBIT_PASSWORD: guest
     ports:
       - "8080:8080"
+  zipkin:
+    image: openzipkin/zipkin:3
+    container_name: zipkin
+    networks:
+      - pr_network
+    ports:
+      - "9411:9411"
+  prometheus:
+    image: prom/prometheus:v3.4.0
+    container_name: prometheus
+    networks:
+      - pr_network
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus/data:/prometheus
 networks:
   pr_network:
     driver: bridge

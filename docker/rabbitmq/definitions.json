@@ -1,0 +1,76 @@
+{
+  "permissions": [
+    {
+      "configure": ".*",
+      "read": ".*",
+      "user": "guest",
+      "vhost": "/",
+      "write": ".*"
+    }
+  ],
+  "bindings": [
+    {
+      "arguments": {},
+      "destination": "operationQueue",
+      "destination_type": "queue",
+      "routing_key": "",
+      "source": "people-registration.operation",
+      "vhost": "/"
+    }
+  ],
+  "queues": [
+    {
+      "arguments": {
+        "x-queue-type": "classic"
+      },
+      "auto_delete": false,
+      "durable": true,
+      "name": "operationQueue",
+      "type": "classic",
+      "vhost": "/"
+    }
+  ],
+  "policies": [],
+  "parameters": [],
+  "rabbitmq_version": "4.1.0",
+  "rabbit_version": "4.1.0",
+  "exchanges": [
+    {
+      "arguments": {},
+      "auto_delete": false,
+      "durable": true,
+      "name": "people-registration.operation",
+      "type": "fanout",
+      "vhost": "/"
+    }
+  ],
+  "vhosts": [
+    {
+      "default_queue_type": "classic",
+      "limits": [],
+      "metadata": {
+        "description": "Default virtual host",
+        "tags": []
+      },
+      "name": "/"
+    }
+  ],
+  "users": [
+    {
+      "hashing_algorithm": "rabbit_password_hashing_sha256",
+      "limits": {},
+      "name": "guest",
+      "password_hash": "MPXW5CCUG5yHeq2dEEHRRbFzLaqOIoEaaQdv1gAnRK0hogsl",
+      "tags": [
+        "administrator"
+      ]
+    }
+  ],
+  "global_parameters": [
+    {
+      "name": "cluster_tags",
+      "value": []
+    }
+  ],
+  "topic_permissions": []
+}

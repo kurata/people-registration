@@ -24,6 +24,8 @@ services:
       - "15672:15672"
     volumes:
       - ./rabbitmq/data:/var/lib/rabbitmq:rw
+      - ./rabbitmq/definitions.json:/opt/definitions.json:ro
+      - ./rabbitmq/rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro
   mongodb:
     image: mongodb/mongodb-community-server:latest
     container_name: pr_mongodb

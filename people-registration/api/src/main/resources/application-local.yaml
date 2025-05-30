@@ -11,3 +11,11 @@ spring:
     properties:
       hibernate:
         format_sql: true
+logging:
+  level:
+    root: info
+    org.hibernate.sql: debug
+    org.springframework.ormm.jpa: debug
+    br.com.aqueteron: debug
+  pattern:
+    console: "%-6r %d{ISO8601} %highlight(%-5level) [%blue(%t)] %yellow(%X{correlationId}) %magenta(%C{1}): %msg%n%throwable"

@@ -2,6 +2,9 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost:27017/people-registration
+#      ssl:
+#        enabled: true
+#        bundle: server
   datasource:
     url: jdbc:postgresql://localhost:5432/people-registration
     username: apppr
@@ -11,11 +14,46 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  rabbitmq:
+    host: localhost
+    port: 5671
+    ssl:
+      enabled: true
+      bundle: server
+      verify-hostname: false
+      algorithm: "TLSv1.3"
+  ssl:
+    bundle:
+      jks:
+        web:
+          key:
+            alias: "People Register Dev"
+            password: ""
+          keystore:
+            location: "classpath:application.p12"
+            password: "secret"
+            type: "PKCS12"
+        server:
+          key:
+            alias: "People Register Dev"
+            password: ""
+          keystore:
+            location: "classpath:application.p12"
+            password: "secret"
+            type: "PKCS12"
+          truststore:
+            location: "classpath:truststore.p12"
+            password: "secret"
+            type: "PKCS12"
 logging:
   level:
     root: info
     org.hibernate.sql: debug
-    org.springframework.ormm.jpa: debug
+    org.springframework.orm.jpa: debug
     br.com.aqueteron: debug
   pattern:
     console: "%-6r %d{ISO8601} %highlight(%-5level) [%blue(%t)] %yellow(%X{correlationId}) %magenta(%C{1}): %msg%n%throwable"
+server:
+  port: 8443
+  ssl:
+    bundle: web

@@ -1,0 +1,11 @@
+net:
+  ssl:
+    mode: requireSSL
+    PEMKeyFile: /opt/cert/mongodb_dev.pem
+    CAFile: /opt/cert/ca_certificate.pem
+    allowConnectionsWithoutCertificates: false
+storage:
+  dbPath: "/data/db"
+net:
+  bindIp: 127.0.0.1
+  port: 27017
